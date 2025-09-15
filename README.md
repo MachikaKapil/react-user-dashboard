@@ -1,138 +1,70 @@
-# User Dashboard
+# Getting Started with Create React App
 
-## 1. Objective
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The goal is to build a small “User Dashboard” application using React.js. This project will test your understanding of fundamental React concepts like components, hooks, state management, API calls, and routing.
+## Available Scripts
 
-## 2. Tech Stack
+In the project directory, you can run:
 
-- **React:** For building the user interface with functional components and hooks.
-- **React Router DOM:** For handling client-side navigation between pages.
-- **Axios (or Fetch):** For making HTTP requests to a public API.
-- **React Context:** For simple global state management.
-- **Tailwind CSS:** For styling and creating a responsive design.
+### `npm start`
 
-## 3. Getting Started: Step-by-Step Setup
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Follow these instructions to set up your development environment.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Prerequisites
+### `npm test`
 
-Ensure you have [Node.js](https://nodejs.org/) (which includes npm) installed on your machine. You can check by running `node -v` and `npm -v` in your terminal.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Step 3.1: Create Your React App
+### `npm run build`
 
-Open your terminal and run the following command to create a new React project named `user-dashboard`.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```
-npx create-react-app user-dashboard
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Navigate into your new project directory:
+### `npm run eject`
 
-```
-cd user-dashboard
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### Step 3.2: Install Dependencies
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-We need to install a few libraries for routing, API calls, and styling.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-```
-npm install react-router-dom axios tailwindcss postcss autoprefixer
+## Learn More
 
-```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### Step 3.3: Initialize Tailwind CSS
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-Run these commands to create the necessary Tailwind configuration files (`tailwind.config.js` and `postcss.config.js`).
+### Code Splitting
 
-```
-npx tailwindcss init -p
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-```
+### Analyzing the Bundle Size
 
-Next, configure your `tailwind.config.js` to tell Tailwind which files to scan for classes.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-```
-// tailwind.config.js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
+### Making a Progressive Web App
 
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-Finally, add the Tailwind directives to your main CSS file, `src/index.css`. Replace the existing content with this:
+### Advanced Configuration
 
-```
-/* src/index.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-```
+### Deployment
 
-Your project is now set up! You can start the development server by running:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-```
-npm start
+### `npm run build` fails to minify
 
-```
-
-## 4. Implementation Guide
-
-Let's build the application feature by feature.
-
-### Step 4.1: Project Structure
-
-A clean folder structure helps keep your code organized. Create the following folders inside your `src` directory:
-
-- `src/components`: For reusable UI components (e.g., `UserCard.jsx`, `Header.jsx`).
-- `src/pages`: For top-level page components (e.g., `DashboardPage.jsx`, `UserDetailsPage.jsx`).
-- `src/context`: For our React Context files (e.g., `UserContext.jsx`).
-- `src/api`: For API-related logic (e.g., `userService.js`).
-
-### Step 4.2: Setting up Global State (React Context)
-
-We'll use the Context API to fetch the user data once and make it available throughout the entire app.
-
-**1. Create the API Service (`src/api/userService.js`):**
-
-This file will handle the API call to fetch users. We'll use the free [JSONPlaceholder API](https://www.google.com/search?q=https://jsonplaceholder.typicode.com/users).
-
-**2. Create the User Context (`src/context/UserContext.jsx`):**
-
-This is where we'll define our global state.
-
-**3. Provide the Context to Your App (`src/index.js`):**
-
-Wrap your `<App />` component with the `UserProvider` so that all components inside `App` can access the user data.
-
-### Step 4.3: Setting up Routing
-
-Now, let's define the pages and the routes for our application in `src/App.js`.
-
-### Step 4.4: Building the Dashboard Page
-
-This page will display the list of users, a search bar, and a form to add new users. We will assemble it from smaller, reusable components. For a complete, single-file example combining all components, see the `App.jsx` file provided alongside this guide.
-
-### Step 4.5: Building the User Details Page
-
-This page shows all information for a single, selected user. It will fetch the user ID from the URL.
-
-## 5. Styling and Responsive Design
-
-Tailwind CSS makes responsiveness easy. Use its utility classes:
-
-- **Flexbox/Grid:** Use `flex`, `grid`, `grid-cols-1`, `md:grid-cols-2`, `lg:grid-cols-3` for layouts that adapt to screen size.
-- **Spacing:** Use `p-4`, `m-2` for padding and margin.
-- **Breakpoints:** Prefixes like `sm:`, `md:`, `lg:` apply styles only on certain screen sizes (e.g., `w-full md:w-1/2`).
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
